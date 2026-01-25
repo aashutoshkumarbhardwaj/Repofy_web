@@ -6,12 +6,16 @@
   "scripts": {
     "dev": "vite",
     "dev:server": "node server/index.js",
+    "start:server": "node server/index.js",
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest"
+  },
+  "engines": {
+    "node": ">=20 <23"
   },
   "dependencies": {
     "@google/genai": "^1.38.0",

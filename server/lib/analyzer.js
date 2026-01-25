@@ -166,7 +166,7 @@ export const analyzeRepo = async (repoUrl) => {
 
   const overviewContent =
     (await generateText(formatOverviewPrompt({ repoMeta, readme, packageJson, folderPaths }))) ||
-    "LLM is not configured. Set GEMINI_API_KEY to enable repository analysis.";
+    "LLM is not configured. Set OPENROUTER_API_KEY to enable repository analysis.";
 
   const overview = {
     title: "Repository Overview",
@@ -179,7 +179,7 @@ export const analyzeRepo = async (repoUrl) => {
     const sampleFiles = filePaths.filter((path) => path.startsWith(`${folderPath}/`)).slice(0, 40);
     const content =
       (await generateText(formatFolderPrompt({ folderPath, folderFiles: sampleFiles }))) ||
-      "LLM is not configured. Set GEMINI_API_KEY to enable folder summaries.";
+      "LLM is not configured. Set OPENROUTER_API_KEY to enable folder summaries.";
     folders[folderPath] = {
       title: `Folder: ${folderPath}`,
       content: content.trim(),
@@ -218,7 +218,7 @@ export const explainFolder = async (repoUrl, folderPath) => {
   const folderFiles = filePaths.filter((path) => path.startsWith(`${folderPath}/`)).slice(0, 40);
   const content =
     (await generateText(formatFolderPrompt({ folderPath, folderFiles }))) ||
-    "LLM is not configured. Set GEMINI_API_KEY to enable folder summaries.";
+    "LLM is not configured. Set OPENROUTER_API_KEY to enable folder summaries.";
 
   return {
     title: `Folder: ${folderPath}`,
@@ -237,7 +237,7 @@ export const explainFile = async (repoUrl, path) => {
   const fileContent = await fetchFileContent(owner, repo, path);
   const content =
     (await generateText(formatFilePrompt({ filePath: path, fileContent }))) ||
-    "LLM is not configured. Set GEMINI_API_KEY to enable file explanations.";
+    "LLM is not configured. Set OPENROUTER_API_KEY to enable file explanations.";
 
   const explanation = {
     title: `File: ${path}`,
@@ -284,7 +284,7 @@ export const answerQuestion = async (repoUrl, question, context) => {
 
   const answerText =
     (await generateText(prompt)) ||
-    "LLM is not configured. Set GEMINI_API_KEY to enable question answering.";
+    "LLM is not configured. Set OPENROUTER_API_KEY to enable question answering.";
 
   return {
     title: "Answer",
