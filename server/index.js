@@ -8,23 +8,35 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3001;
 
+const normalizeOrigin = (value) => (value || "").trim().replace(/\/$/, "");
+
 const parseCorsOrigins = (value) =>
   (value || "")
     .split(",")
-    .map((entry) => entry.trim())
+    .map((entry) => normalizeOrigin(entry))
     .filter(Boolean);
 
 const allowedOrigins = parseCorsOrigins(process.env.CORS_ORIGIN);
+const allowAnyOrigin = allowedOrigins.includes("*");
+const allowOriginByPattern = (origin) => {
+  const normalized = normalizeOrigin(origin);
+  if (normalized.includes("repofy")) return true;
+  if (normalized.endsWith(".vercel.app")) return true;
+  return false;
+};
 
 app.use(
   cors({
     origin: (origin, callback) => {
       if (!origin) return callback(null, true);
-      if (allowedOrigins.length === 0) return callback(null, true);
-      if (allowedOrigins.includes(origin)) return callback(null, true);
-      return callback(new Error("Not allowed by CORS"));
+      if (allowAnyOrigin || allowedOrigins.length === 0) return callback(null, true);
+      const normalizedOrigin = normalizeOrigin(origin);
+      if (allowedOrigins.includes(normalizedOrigin)) return callback(null, true);
+      if (allowOriginByPattern(normalizedOrigin)) return callback(null, true);
+      return callback(null, false);
     },
-    credentials: true,
+    credentials: !allowAnyOrigin,
+    optionsSuccessStatus: 204,
   })
 );
 app.use(express.json({ limit: "2mb" }));
