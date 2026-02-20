@@ -1,73 +1,115 @@
-# Welcome to your Lovable project
+# Repofy 🤖
 
-## Project info
+> AI-powered repository intelligence — understand any codebase in minutes, not days.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+[![NPM Downloads](https://img.shields.io/npm/dt/repofy)](https://www.npmjs.com/package/repofy)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-## How can I edit this code?
+Repofy analyzes GitHub/GitLab repositories and auto-generates documentation, onboarding guides, and health reports using AI — so you can focus on building, not exploring.
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## ✨ Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+- **AI-Powered Analysis** — Understands code context via OpenRouter LLM and generates human-readable docs
+- **README & Doc Generation** — Creates comprehensive documentation from your codebase automatically
+- **Tech Stack Detection** — Identifies languages, frameworks, and tools at a glance
+- **Repository Health Scores** — Quantified metrics for documentation quality and maintainability
+- **Onboarding Guides** — Auto-generated setup instructions and contribution workflows
+- **Contributor Analytics** — Activity trends, top contributors, and engagement metrics
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## 🚀 Quick Start
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+**Via npx (no install needed):**
+```bash
+npx repofy analyze https://github.com/username/repo
 ```
 
-**Edit a file directly in GitHub**
+**Global install:**
+```bash
+npm install -g repofy
+repofy analyze https://github.com/username/repo
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## 🛠️ Usage
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### CLI
+```bash
+# Analyze a repository
+repofy analyze <repository-url>
 
-## What technologies are used for this project?
+# Generate a README
+repofy docs <repository-url>
 
-This project is built with:
+# Get health score
+repofy health <repository-url>
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### API
+```js
+const repofy = require('repofy');
 
-## How can I deploy this project?
+const report = await repofy.analyze('https://github.com/username/repo');
+console.log(report.summary);
+```
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
+## 🧰 Tech Stack
 
-Yes, you can!
+| Layer | Technology |
+|-------|-----------|
+| AI/ML | OpenRouter LLM, Archestra AI |
+| Backend | Node.js, Express |
+| Frontend | React |
+| CLI | Commander.js, Inquirer |
+| APIs | GitHub API, GitLab API |
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## 🗺️ Roadmap
+
+- [x] CLI tool with basic analysis
+- [x] Web platform MVP
+- [x] OpenRouter LLM integration
+- [ ] GitHub App integration
+- [ ] VS Code extension
+- [ ] Automated documentation updates
+- [ ] Team collaboration features
+- [ ] Enterprise analytics dashboard
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Here's how to get started:
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+
+---
+
+## 📄 License
+
+Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
+
+---
+
+## 📬 Connect
+
+- **NPM:** [npmjs.com/package/repofy](https://npmjs.com/package/repofy)
+- **Website:** [your-website-url]
+- **LinkedIn:** [your-linkedin]
+- **Twitter:** [your-twitter]
+
+Built with ❤️ for the developer community · #2FAST2MCP Hackathon participant
